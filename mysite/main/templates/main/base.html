@@ -1,0 +1,70 @@
+<html>
+<head>
+    <title>Adi website</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+<style type="text/css">
+    .sidenav{
+        padding-top: 20px;
+        overflow-x: hidden;
+        background-color: #111;
+        left: 0;
+        top: 0;
+        z-index: 1;
+        position: fixed;
+        width: 160px;
+        height: 100%;
+    }
+    .sidenav a{
+        display: block;
+        color: #818181;
+        font-size: 25px;
+        text-decoration: none;
+        padding: 6px 8px 6px 16px;
+    }
+    .sidenav a:hover{
+        color: #f1f1f1;
+
+    }
+    .main{
+        padding: 0px 10px;
+        margin-left: 160px;
+    }
+
+</style>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+    <div class="sidenav">
+        <a href="/">Home</a>
+        <a href="/create">Create</a>
+        <a href="/view">View</a>
+        {% if not user.is_authenticated%}
+        <a href="/login">Login</a>
+        {% endif %}
+        <a href="/logout">Logout</a>
+        
+    </div>
+    <div class="main" name="content">
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <h1 class="mt-2">To do list</h1>
+                
+                <hr class="mt-0 mb-4">             
+                {% block content%}
+
+                {% endblock content%}
+            </div>
+            <div class="col-3 mt-3">
+                 
+                {% if user.is_authenticated%}
+                Logged as <b>{{user.username}}</b>
+                <a href="/logout">(logout)</a>
+                {% endif %}
+
+            </div>    
+        </div>    
+    </div>
+</body>
+</html>

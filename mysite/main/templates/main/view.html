@@ -1,0 +1,10 @@
+{% extends "main/base.html"%}
+
+
+{% block content %}
+
+    {% for list in user.todolist.all %}
+        <h3 class="mt-5"><a  class='text-info' style="text-decoration: none;" href="/{{list.id}}">{{list.name}}</a></h3>
+    {% endfor %}
+
+{% endblock content %}
