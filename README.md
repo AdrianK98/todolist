@@ -1,2 +1,2 @@
 # todolist
-Simple todolist web app to learn some Django
+Simple todolist web app in order to learn Django CRUD
